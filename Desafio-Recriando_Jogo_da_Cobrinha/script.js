@@ -17,11 +17,23 @@ function criarBG(){
 function criarCobrinha(){
     for(i = 0; i < snake.length; i++){
         context.fillStyle = "green";
-        context.fillRect(snake[i].x, snake[i].y, box, box);
+        context.fillRect(snake[i].x, snake[i].y, box, box)
     }
 }
 
+document.addEventListener('keydown', update);
+
+function update (event){
+    if(event.keyCode == 37 && direction != "right") direction = "left";
+    if(event.keyCode == 38 && direction != "down") direction = "up";
+    if(event.keyCode == 39 && direction != "left") direction = "right";
+    if(event.keyCode == 40 && direction != "up") direction = "down";
+}
+
+
 function iniciarJogo(){
+
+
     criarBG();
     criarCobrinha();
 
@@ -37,7 +49,7 @@ function iniciarJogo(){
 
     let newHead = {
         x: snakeX,
-        y: snakeX
+        y: snakeY
     }
 
     snake.unshift(newHead);
